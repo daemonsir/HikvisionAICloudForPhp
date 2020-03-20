@@ -7,21 +7,21 @@ namespace Hik\FaceApi;
  */
 class HttpUtilLib
 {
-    protected $_app_key      = '';
-    protected $_app_secret   = '';
-    public    $_time;
-    public    $_content_type = 'application/json;charset=UTF-8';
-    public    $_accept       = 'application/json';
-    public    $_charset       = 'utf-8';
+    protected $appKey      = '';
+    protected $appSecret   = '';
+    public    $time;
+    public    $contentType = 'application/json;charset=UTF-8';
+    public    $accept       = 'application/json';
+    public    $charset       = 'utf-8';
 
     public function __construct ($appkey ,$secret ,$time)
     {
         //init charset and time and
         header('Content-type:text/html; Charset=utf-8');
         date_default_timezone_set('PRC');
-        if ($appkey != '') $this->_app_key = $appkey;
-        if ($secret != '') $this->_app_secret = $secret;
-        $this->_time   = $time;
+        if ($appkey != '') $this->appKey = $appkey;
+        if ($secret != '') $this->appSecret = $secret;
+        $this->time   = $time;
     }
 
     /**
@@ -30,9 +30,9 @@ class HttpUtilLib
      * @return string
      * 以appSecret为密钥，使用HmacSHA256算法对签名字符串生成消息摘要，对消息摘要使用BASE64算法生成签名（签名过程中的编码方式全为UTF-8）
      */
-    function get_sign ($postData ,$url)
+    function getSign ($postData ,$url)
     {
-        return base64_encode(hash_hmac('sha256' ,$this->get_sign_str($postData ,$url) ,$this->_app_secret ,true)); //生成消息摘要
+        return base64_encode(hash_hmac('sha256' ,$this->getSignStr($postData ,$url) ,$this->appSecret ,true)); //生成消息摘要
     }
 
     /**
@@ -40,7 +40,7 @@ class HttpUtilLib
      * @param $url
      * @return string
      */
-    function get_sign_str ($postData ,$url)
+    function getSignStr ($postData ,$url)
     {
         /**
          *    注：当请求的body非form表单时，建议调用方对body计算MD5参与签名，将Content-MD5放入请求headers中，value可以为任意值，服务端不会取Content-MD5的value进行校验，而是根据body中的数据计算MD5进行校验。
@@ -55,9 +55,9 @@ class HttpUtilLib
          *    Url
          */
         $next = "\n";
-        $str  = "POST" . $next .$this->_accept . $next . $this->_content_type . $next;
-        $str  .= "x-ca-key:" . $this->_app_key . $next;
-        $str  .= "x-ca-timestamp:" . $this->_time . $next;
+        $str  = "POST" . $next .$this->accept . $next . $this->contentType . $next;
+        $str  .= "x-ca-key:" . $this->appKey . $next;
+        $str  .= "x-ca-timestamp:" . $this->time . $next;
         $str  .= $url;
         return $str;
     }
@@ -75,7 +75,7 @@ class HttpUtilLib
         foreach ($params as $k => $v) {
             if (false === $this->checkEmpty($v) && "@" != substr($v ,0 ,1)) {
                 // 转换成目标字符集
-                $v = $this->characet($v ,$this->_charset);
+                $v = $this->characet($v ,$this->charset);
                 if ($i == 0) {
                     $stringToBeSigned .= "?$k" . "=" . "$v";
                 } else {
@@ -92,7 +92,7 @@ class HttpUtilLib
      * @param $postData
      * @return string
      */
-    function get_message ($postData)
+    function getMessage ($postData)
     {
         $str = str_replace(['{' ,'}' ,'"'] ,'' ,json_encode($postData));
         return base64_encode(md5($str));
@@ -123,7 +123,7 @@ class HttpUtilLib
     function characet ($data ,$targetCharset)
     {
         if (!empty($data)) {
-            $fileType = $this->_charset;
+            $fileType = $this->charset;
             if (strcasecmp($fileType ,$targetCharset) != 0) {
                 $data = mb_convert_encoding($data ,$targetCharset ,$fileType);
             }
