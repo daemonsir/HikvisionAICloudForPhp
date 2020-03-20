@@ -3,7 +3,8 @@
 namespace Hik\FaceApi;
 /**
  * Class Dictionary
- * @package HikFace
+ * @package Hik\FaceApi
+ * @author hs96.cn@gmail.com
  */
 class  Dictionary
 {

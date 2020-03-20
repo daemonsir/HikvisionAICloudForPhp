@@ -3,9 +3,9 @@ namespace Hik\FaceApi;
 /**
  * Class HttpUtillib
  * @package HikFace
- * hs:验签等http操作工具类
+ * @author hs96.cn@gmail.com
  */
-class HttpUtillib
+class HttpUtilLib
 {
     protected $_app_key      = '';
     protected $_app_secret   = '';
@@ -16,7 +16,7 @@ class HttpUtillib
 
     public function __construct ($appkey ,$secret ,$time)
     {
-        //初始化字符集 时间戳
+        //init charset and time and
         header('Content-type:text/html; Charset=utf-8');
         date_default_timezone_set('PRC');
         if ($appkey != '') $this->_app_key = $appkey;
@@ -151,14 +151,12 @@ class HttpUtillib
         if (!empty($options)) {
             curl_setopt_array($ch ,$options);
         }
+        //此处curl php5.4不兼容
         //https请求 不验证证书和host
         curl_setopt($ch ,CURLOPT_SSL_VERIFYPEER ,false);
         curl_setopt($ch ,CURLOPT_SSL_VERIFYHOST ,false);
         $data = curl_exec($ch);
-        dump(curl_error($ch));
-        dump($data);exit;
         curl_close($ch);
-        dump($data);exit;
         return $data;
     }
 }

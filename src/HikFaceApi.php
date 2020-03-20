@@ -5,6 +5,7 @@ namespace Hik\FaceApi;
 /**
  * Class HikFaceApi
  * @package HikFace
+ * @author hs96.cn@gmail.com
  */
 class HikFaceApi
 {
@@ -50,12 +51,7 @@ class HikFaceApi
                 "X-Ca-Signature-Headers:" . "x-ca-key,x-ca-timestamp" ,
             ]
         ];
-//        dump($this->_pre_url . $uri);
-//        dump(json_encode($body));
-//        dump($options);
-//        exit;
         $result  = $this->_http_util_lib->curlPost($this->_pre_url . $uri ,json_encode($body) ,$options);
-        dump($result);exit;
         return json_decode($result ,true);
     }
 }
