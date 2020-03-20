@@ -1,5 +1,5 @@
 {
-  "name": "hikvision-api/face",
+  "name": "hikvisionapi/face",
   "description": "the hikvisionapi for php",
   "authors": [
     {
@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "HikvisionFaceApi\\": "/"
+      "HikvisionFaceApi\\": "src/face"
     }
   }
 }
