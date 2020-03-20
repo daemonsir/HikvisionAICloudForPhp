@@ -1,6 +1,6 @@
 <?php
 
-namespace HikvisionFaceApi;
+namespace Hik\FaceApi;
 /**
  * Class Dictionary
  * @package HikFace

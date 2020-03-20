@@ -1,7 +1,7 @@
 <?php
 //hs:海康类库集成,手动注册到composer映射中。
 //hs:此类库依赖guzzleHttp
-namespace HikvisionFaceApi;
+namespace Hik\FaceApi;
 /**
  * Class HikFaceApi
  * @package HikFace
