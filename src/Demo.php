@@ -1,5 +1,5 @@
 <?php
-namespace HikFace;
+namespace HikvisionFaceApi;
 class Haikang
 {
     public $pre_url = "http://你的ip";

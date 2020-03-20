@@ -1,6 +1,6 @@
 <?php
 
-namespace HikFace;
+namespace HikvisionFaceApi;
 /**
  * Class HttpUtillib
  * @package HikFace
