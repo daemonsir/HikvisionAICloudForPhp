@@ -5,5 +5,7 @@ class clash
     {
         $sql = "SELECT * FROM user WHERE id=1";
         $str = 'this is v1';
+
+        $str = 'this is bc';
     }
 }
