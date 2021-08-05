@@ -1,12 +1,12 @@
 <?php
 
-namespace Hik\HikDoorApi;
+namespace Hik\FaceApi;
 /**
  * Class HikDoorApi
  * @package Hik
  * @author hc
  */
-class HikFaceApi
+class HikDoorApi
 {
     private   $preUrl;
     private   $httpUtilLib = '';
