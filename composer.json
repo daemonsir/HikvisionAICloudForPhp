@@ -18,5 +18,6 @@
     "psr-4": {
       "Hik\\FaceApi\\": "src/"
     }
-  }
+  },
+  "license": "MIT"
 }
