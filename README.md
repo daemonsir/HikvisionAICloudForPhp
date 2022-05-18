@@ -1,13 +1,16 @@
-因为[海康开放平台](https://open.hikvision.com/)人脸识别暂时未提供PHP版本的SKD，所以我个人开发了**HikvisionAICloudForPhp**，这个是人脸识别的PHP版本。
-因为海康开放平台对于摘要加密相关文档比较含糊，所以关于PHP版本的摘要加密也可参考**HikvisionAICloudForPhp**内容自行使用。
+## HikvisionAICloudForPhp
+
+因为[海康开放平台](https://open.hikvision.com/)很多接口暂时未提供PHP版本的SKD，所以我个人开发了**HikvisionAICloudForPhp**，这个是人脸识别和门禁系统的PHP版本，项目中的HTTP工具类也适用其他接口，自行修改即可。
 
 ## composer.json
+```json
 {
     "require": {
         "alibabacloud/client": "1.5",
         "hikvisionapi/face": "@dev"
     }
 }
+```
 
 ## 目录结构
 
